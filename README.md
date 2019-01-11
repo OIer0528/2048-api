@@ -52,3 +52,20 @@ The code is under Apache-2.0 License.
 
 # For EE369 students from SJTU only
 Please read [here](EE369.md).
+
+# To train the model
+jupyter notebook homework_wmz.ipynb
+Modify the hyperparameters in. /wmz/Trainer.py : 
+    GEN_DATA = False
+    GOAL_SCORES = [128, 256, 512, 1024]
+    TRAIN_DATA_DIRS = [F"./data/{s}" for s in GOAL_SCORES]
+
+    LOAD_MODEL = True
+    MODEL_TYPE = "V1"
+    MODEL_PATH = "./model/" + MODEL_TYPE + "/model.pth"
+    
+    EPOCHS = 5
+    BATCH_SIZE = 4096 * 8
+    N_EVAL = 50
+    LEARNING_RATE = 3e-5
+    WEIGHT_DECAY = 0.0005
